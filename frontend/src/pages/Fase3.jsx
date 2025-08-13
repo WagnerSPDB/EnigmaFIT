@@ -6,12 +6,27 @@ export default function Fase1() {
   const [text, setText] = useState("");
   const navigate = useNavigate();
 
-  function handleClick() {
-    if (text === "mount") {
-        alert("ACABOSE Voce venceu...");
+  async function handleClick() {
+    try {
+      const res = await fetch("http://localhost:3001/verificar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fase: "fase3", resposta: text })
+      });
+
+      const data = await res.json();
+
+
+      if (data.ok) {
+        alert("Resposta correta! Final de desafio!");
         navigate("/");
-    } else {
-      alert(`Errou, sua resposta: ${text}`);
+      }else{
+        alert("Resposta incorreta, tente novamente.");
+        setText(""); // Limpa o campo de texto se a resposta estiver errada
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Erro ao verificar resposta");
     }
   }
 

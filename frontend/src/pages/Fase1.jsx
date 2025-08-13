@@ -15,10 +15,13 @@ export default function Fase1() {
       });
 
       const data = await res.json();
-      alert(data.msg);
 
       if (data.ok) {
+        alert("SIIIIIIIIU Resposta corretíssima!");
         navigate("/fase2");
+      } else{
+        alert("Resposta incorreta, tente novamente.");
+        setText(""); // Limpa o campo de texto se a resposta estiver errada
       }
     } catch (err) {
       console.error(err);
