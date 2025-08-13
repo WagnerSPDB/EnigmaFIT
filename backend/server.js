@@ -30,9 +30,9 @@ app.post("/verificar", (req, res) => {
   const respostaUsuario = resposta.trim().toLowerCase();
 
   if (respostaCorreta && respostaCorreta.toLowerCase() === respostaUsuario) {
-    return res.json({ ok: true, msg: "Resposta correta!" });
+    return res.json({ ok: true});
   } else {
-    return res.json({ ok: false, msg: "Resposta errada!" });
+    return res.json({ ok: false});
   }
 });
 
