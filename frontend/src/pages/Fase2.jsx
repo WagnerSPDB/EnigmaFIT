@@ -6,14 +6,26 @@ export default function Fase2() {
   const [text, setText] = useState("");
     const navigate = useNavigate();
 
-  function handleClick() {
-    if (text === "messi") {
-        alert("Aserto, te amo pin.");
-        navigate("/coe");
-    } else {
-      alert(`Errou, sua resposta: ${text}`);
+  async function handleClick() {
+    try {
+      const res = await fetch("http://localhost:3001/verificar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fase: "fase2", resposta: text })
+      });
+
+      const data = await res.json();
+      alert(data.msg);
+
+      if (data.ok) {
+        navigate("/fase3");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Erro ao verificar resposta");
     }
   }
+
 
   function handleKeyDown(e) {
     if (e.key === "Enter") {

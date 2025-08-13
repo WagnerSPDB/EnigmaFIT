@@ -10,8 +10,8 @@ export default function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Fase1 />} />
-        <Route path="/camisiromigueixons" element={<Fase2 />} />
-        <Route path="/coe" element={<Fase3 />} />
+        <Route path="/fase2" element={<Fase2 />} />
+        <Route path="/fase3" element={<Fase3 />} />
       </Routes>
     </Router>
   );
