@@ -2,41 +2,34 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../SimpleForm.css";
 
-export default function Fase1() {
+export default function Fase2() {
   const [text, setText] = useState("");
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  async function handleClick() {
-    try {
-      const res = await fetch("http://localhost:5000/check-answer", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ answer: text })
-      });
-
-      const data = await res.json();
-
-      if (data.correct) {
-        alert("SIIIIIIIIIIU! Redirecionando para a próxima fase...");
-        navigate(data.nextRoute);
-      } else {
-        alert(`Errou, sua resposta: ${text}`);
-      }
-    } catch (err) {
-      console.error("Erro ao validar resposta:", err);
+  function handleClick() {
+    if (text === "cr7") {
+        alert("SIIIIIIIIU!.");
+        navigate("/camisiromigueixons");
+    } else {
+      alert(`Errou, sua resposta: ${text}`);
     }
   }
 
   function handleKeyDown(e) {
-    if (e.key === "Enter") handleClick();
+    if (e.key === "Enter") {
+      handleClick();
+    }
   }
 
   return (
     <div className="container">
-      <img src="cr7.jpg" alt="Imagem 1" />
+      <img
+        src="cr7.jpg"
+        alt="Imagem 1"
+      />
       <input
         type="text"
-        placeholder="Escreva algo aqui..."
+        placeholder="Escreva algo aqui na página 1..."
         value={text}
         onChange={(e) => setText(e.target.value)}
         onKeyDown={handleKeyDown}

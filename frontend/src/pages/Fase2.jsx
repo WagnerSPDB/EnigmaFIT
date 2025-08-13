@@ -15,6 +15,13 @@ export default function Fase2() {
     }
   }
 
+  function handleKeyDown(e) {
+    if (e.key === "Enter") {
+      handleClick();
+    }
+  }
+
+
   return (
     <div className="container">
       <img
@@ -26,6 +33,7 @@ export default function Fase2() {
         placeholder="Escreva algo aqui na página 2..."
         value={text}
         onChange={(e) => setText(e.target.value)}
+        onKeyDown={handleKeyDown}
       />
       <button onClick={handleClick}>Enviar</button>
     </div>

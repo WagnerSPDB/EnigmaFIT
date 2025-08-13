@@ -8,7 +8,8 @@ export default function Fase1() {
 
   function handleClick() {
     if (text === "mount") {
-        alert("ACABOSE...");
+        alert("ACABOSE Voce venceu...");
+        navigate("/");
     } else {
       alert(`Errou, sua resposta: ${text}`);
     }
