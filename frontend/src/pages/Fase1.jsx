@@ -8,7 +8,7 @@ export default function Fase1() {
 
   async function handleClick() {
     try {
-      const res = await fetch("http://localhost:3001/verificar", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/verificar`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ fase: "fase1", resposta: text })
