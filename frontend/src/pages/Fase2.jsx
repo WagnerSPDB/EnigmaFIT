@@ -18,6 +18,7 @@ export default function Fase2() {
 
       if (data.ok) {
         alert("Resposta correta! Você é um gênio!");
+        localStorage.setItem("ultimaFaseConcluida", "2"); // salva progresso
         navigate("/fase3");
       }else{
         alert("Resposta incorreta, tente novamente.");
