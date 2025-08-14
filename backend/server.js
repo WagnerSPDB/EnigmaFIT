@@ -30,13 +30,16 @@ app.post("/verificar", (req, res) => {
   const respostaUsuario = resposta.trim().toLowerCase();
 
   if (respostaCorreta && respostaCorreta.toLowerCase() === respostaUsuario) {
-    return res.json({ ok: true});
+    return res.json({ ok: true });
   } else {
-    return res.json({ ok: false});
+    return res.json({ ok: false });
   }
 });
 
+// Usa a porta do Render ou 3001 localmente
+const PORT = process.env.PORT || 3001;
 
-// Inicializa servidor
-const PORT = 3001;
-app.listen(PORT, () => console.log(`Servidor rodando em http://localhost:${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+  console.log("Teste local: http://localhost:" + PORT);
+});
