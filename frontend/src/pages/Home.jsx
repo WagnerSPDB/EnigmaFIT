@@ -8,7 +8,7 @@ export default function Home() {
     <div className="container">
       <h1>Bem-vindo ao Jogo de Perguntas!</h1>
       <p>Tente acertar todas as fases para vencer</p>
-      <button onClick={() => navigate('/fase1')}>Começar</button>
+      <button onClick={() => navigate('/fase0')}>Começar</button>
     </div>
   );
 }

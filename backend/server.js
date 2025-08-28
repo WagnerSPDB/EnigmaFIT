@@ -8,9 +8,11 @@ app.use(express.json()); // permite receber JSON
 
 // Dicionário de respostas
 const respostas = {
+  fase0: "fit2025",
   fase1: "cr7",
   fase2: "messi",
-  fase3: "mount"
+  fase3: "neymar",
+  fase4: "familia"
 };
 
 // Endpoint para verificar resposta
@@ -38,6 +40,7 @@ app.post("/verificar", (req, res) => {
 
 // Usa a porta do Render ou 3001 localmente
 const PORT = process.env.PORT || 3001;
+console.log("Porta do servidor:", process.env.PORT);
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);

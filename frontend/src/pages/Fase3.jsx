@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../SimpleForm.css";
 
-export default function Fase1() {
+export default function Fase3() {
   const [text, setText] = useState("");
   const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ export default function Fase1() {
       if (data.ok) {
         alert("Resposta correta! Final de desafio!");
         localStorage.setItem("ultimaFaseConcluida", "3"); // salva progresso
-        navigate("/");
+        navigate("/fase4");
       }else{
         alert("Resposta incorreta, tente novamente.");
         setText(""); // Limpa o campo de texto se a resposta estiver errada
@@ -41,15 +41,16 @@ export default function Fase1() {
   return (
     <div className="container">
       <img
-        src="mason.jpg"
+        src="neymar.jpg"
         alt="Imagem 1"
       />
+      <p>Senha: neymar</p>
       <input
         type="text"
         placeholder="Escreva algo aqui..."
         value={text}
         onChange={(e) => setText(e.target.value)}
-        onKeyDown={handleKeyDown}  // Adicionando o evento de pressionar tecla
+        onKeyDown={handleKeyDown} 
       />
       <button onClick={handleClick}>Enviar</button>
     </div>

@@ -37,6 +37,7 @@ export default function Fase1() {
   return (
     <div className="container">
       <img src="cr7.jpg" alt="Imagem 1" />
+      <p>Senha: cr7</p>
       <input
         type="text"
         placeholder="Digite sua resposta..."
