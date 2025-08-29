@@ -38,11 +38,12 @@ app.post("/verificar", (req, res) => {
   }
 });
 
+
+const HOST = "0.0.0.0";
 // Usa a porta do Render ou 3001 localmente
 const PORT = process.env.PORT || 3001;
 console.log("Porta do servidor:", process.env.PORT);
 
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
-  console.log("Teste local: http://localhost:" + PORT);
+app.listen(PORT, HOST, () => {
+  console.log(`Servidor rodando em http://${HOST}:${PORT}`);
 });
