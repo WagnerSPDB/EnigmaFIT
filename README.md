@@ -22,7 +22,7 @@ cd backend
 npm install       # Instala as dependências (necessário apenas na primeira vez)  
 npm start         # Inicia o servidor  
 ```
-O backend ficará disponível em: ➡️ http://localhost:3001
+O backend ficará disponível em: ➡️ http://localhost:3001 (Não está programado pra mostrar nada, então dá erro ao acessar, mas ele roda lá)
 
 ### 3. Rodando o frontend (em outro terminal):
 ```
@@ -49,4 +49,4 @@ Frontend:
 ➡️ http://localhost:3000
 
 Backend:
-➡️ http://localhost:3001
+➡️ http://localhost:3001 (Não está programado pra mostrar nada, então dá erro ao acessar, mas ele roda lá)
