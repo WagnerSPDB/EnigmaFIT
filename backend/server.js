@@ -12,7 +12,10 @@ const respostas = {
   fase1: "cr7",
   fase2: "messi",
   fase3: "neymar",
-  fase4: "familia"
+  fase4: "familia",
+  fase5: "20140801",
+  fase6: "berlim",
+  fase7: "apolo",
 };
 
 // Endpoint para verificar resposta

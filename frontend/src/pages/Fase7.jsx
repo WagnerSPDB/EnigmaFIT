@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../SimpleForm.css";
 
-export default function Fase4() {
+export default function Fase7() {
   const [text, setText] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = "Chalé";
+  }, []);
 
   async function handleClick() {
     try {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/verificar`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fase: "fase4", resposta: text })
+        body: JSON.stringify({ fase: "fase7", resposta: text })
       });
 
       const data = await res.json();
@@ -19,8 +23,8 @@ export default function Fase4() {
 
       if (data.ok) {
         alert("Resposta correta!");
-        localStorage.setItem("ultimaFaseConcluida", "4"); // salva progresso
-        navigate("/fase5");
+        localStorage.setItem("ultimaFaseConcluida", "7"); // salva progresso
+        navigate("/");
       }else{
         alert("Resposta incorreta, tente novamente.");
         setText(""); // Limpa o campo de texto se a resposta estiver errada
@@ -41,7 +45,7 @@ export default function Fase4() {
   return (
     <div className="container">
       <img
-        src="biogolia.jpg"
+        src="RickRiordan.jpg"
         alt="Imagem 1"
       />
       <input

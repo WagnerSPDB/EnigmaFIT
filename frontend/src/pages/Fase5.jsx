@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../SimpleForm.css";
 
-export default function Fase4() {
+export default function Fase5() {
   const [text, setText] = useState("");
   const navigate = useNavigate();
 
@@ -11,7 +11,7 @@ export default function Fase4() {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/verificar`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fase: "fase4", resposta: text })
+        body: JSON.stringify({ fase: "fase5", resposta: text })
       });
 
       const data = await res.json();
@@ -19,8 +19,8 @@ export default function Fase4() {
 
       if (data.ok) {
         alert("Resposta correta!");
-        localStorage.setItem("ultimaFaseConcluida", "4"); // salva progresso
-        navigate("/fase5");
+        localStorage.setItem("ultimaFaseConcluida", "5"); // salva progresso
+        navigate("/fase6");
       }else{
         alert("Resposta incorreta, tente novamente.");
         setText(""); // Limpa o campo de texto se a resposta estiver errada
@@ -41,7 +41,7 @@ export default function Fase4() {
   return (
     <div className="container">
       <img
-        src="biogolia.jpg"
+        src="fase5.jpg"
         alt="Imagem 1"
       />
       <input

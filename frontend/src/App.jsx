@@ -7,6 +7,9 @@ import Fase1 from "./pages/Fase1";
 import Fase2 from "./pages/Fase2";
 import Fase3 from "./pages/Fase3";
 import Fase4 from "./pages/Fase4";
+import Fase5 from "./pages/Fase5";
+import Fase6 from "./pages/Fase6";
+import Fase7 from "./pages/Fase7";
 import ProtectedRoute from "./components/ProtectedRoutes";
 
 
@@ -60,6 +63,34 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+
+        <Route
+          path="/fase5"
+          element={
+            <ProtectedRoute faseAtual={5}>
+              <Fase5 />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/fase6"
+          element={
+            <ProtectedRoute faseAtual={6}>
+              <Fase6 />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/fase7"
+          element={
+            <ProtectedRoute faseAtual={7}>
+              <Fase7 />
+            </ProtectedRoute>
+          }
+        />
+
       </Routes>
     </Router>
   );
