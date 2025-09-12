@@ -43,10 +43,26 @@ Esse comando irá:
 Construir as imagens do frontend e do backend  
 Iniciar os containers com as configurações corretas  
 
-### 2. Acesse nos navegadores(Também coloquei pra aparecer no terminal):
+### 2. Acesse nos navegadores (Também coloquei pra aparecer no terminal):
 
 Frontend:
 ➡️ http://localhost:3000
 
 Backend:
 ➡️ http://localhost:3001 (Não está programado pra mostrar nada, então dá erro ao acessar, mas ele roda lá)
+
+
+
+
+
+## Atenção ao endereço do backend!
+### No arquivo .env que está na pasta frontend, tem dois links:
+```
+REACT_APP_API_URL=http://localhost:3001
+#REACT_APP_API_URL=https://enigmafit.onrender.com
+```
+
+Aqui vocês devem deixar um comentado, quando for rodar localmente, comentem o https://enigmafit.onrender.com.
+Devemos comentar o localhost apenas quando for hospedar o site.
+
+
