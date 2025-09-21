@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../SimpleForm.css";
+import "../styles/fases.css";
+import fase2 from "../assets/fase2.jpg";
+import estrelaImg from "../assets/star.png";
 
 export default function Fase2() {
   const [text, setText] = useState("");
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   async function handleClick() {
     try {
@@ -16,8 +18,9 @@ export default function Fase2() {
 
       const data = await res.json();
 
+
       if (data.ok) {
-        alert("Resposta correta! Você é um gênio!");
+        alert("Resposta correta!");
         localStorage.setItem("ultimaFaseConcluida", "2"); // salva progresso
         navigate("/fase3");
       }else{
@@ -30,29 +33,36 @@ export default function Fase2() {
     }
   }
 
-
+  // Função para capturar o Enter
   function handleKeyDown(e) {
     if (e.key === "Enter") {
       handleClick();
     }
   }
 
-
   return (
-    <div className="container">
-      <img
-        src="messi.jpg"
-        alt="Imagem 2"
-      />
-      <p>Senha: messi</p>
-      <input
-        type="text"
-        placeholder="Escreva algo aqui na página 2..."
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        onKeyDown={handleKeyDown}
-      />
-      <button onClick={handleClick}>Enviar</button>
+    <div className="fase-container">
+      <img src={estrelaImg} alt="estrela" className="icon-top" />
+
+      <div className="card">
+        <img src={fase2} alt="Fase 2" className="card-img" />
+      </div>
+
+      <div className="info-box">
+        <div className="fase-num">2</div>
+        <p>Resolva o enigma</p>
+      </div>
+
+      <div className="input-area">
+        <input
+          type="text"
+          placeholder="Resposta..."
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          onKeyDown={handleKeyDown}
+        />
+        <button onClick={handleClick}>OK</button>
+      </div>
     </div>
   );
 }

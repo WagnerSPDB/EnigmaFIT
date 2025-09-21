@@ -9,13 +9,10 @@ app.use(express.json()); // permite receber JSON
 // Dicionário de respostas
 const respostas = {
   fase0: "fit2025",
-  fase1: "cr7",
-  fase2: "messi",
-  fase3: "neymar",
-  fase4: "familia",
-  fase5: "20140801",
-  fase6: "berlim",
-  fase7: "apolo",
+  fase1: "familia",
+  fase2: "20140801",
+  fase3: "berlim",
+  fase4: "apolo"
 };
 
 // Endpoint para verificar resposta

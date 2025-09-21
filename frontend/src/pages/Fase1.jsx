@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../SimpleForm.css";
+import "../styles/fases.css";
+import fase1 from "../assets/biogolia1.jpg";
+import estrelaImg from "../assets/star.png";
 
 export default function Fase1() {
   const [text, setText] = useState("");
@@ -16,11 +18,12 @@ export default function Fase1() {
 
       const data = await res.json();
 
+
       if (data.ok) {
-        alert("SIIIIIIIIU Resposta corretíssima!");
+        alert("Resposta correta!");
         localStorage.setItem("ultimaFaseConcluida", "1"); // salva progresso
         navigate("/fase2");
-      } else{
+      }else{
         alert("Resposta incorreta, tente novamente.");
         setText(""); // Limpa o campo de texto se a resposta estiver errada
       }
@@ -30,22 +33,36 @@ export default function Fase1() {
     }
   }
 
+  // Função para capturar o Enter
   function handleKeyDown(e) {
-    if (e.key === "Enter") handleClick();
+    if (e.key === "Enter") {
+      handleClick();
+    }
   }
 
   return (
-    <div className="container">
-      <img src="cr7.jpg" alt="Imagem 1" />
-      <p>Senha: cr7</p>
-      <input
-        type="text"
-        placeholder="Digite sua resposta..."
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        onKeyDown={handleKeyDown}
-      />
-      <button onClick={handleClick}>Enviar</button>
+    <div className="fase-container">
+      <img src={estrelaImg} alt="estrela" className="icon-top" />
+
+      <div className="card">
+        <img src={fase1} alt="Fase 1" className="card-img" />
+      </div>
+
+      <div className="info-box">
+        <div className="fase-num">1</div>
+        <p>Resolva o enigma</p>
+      </div>
+
+      <div className="input-area">
+        <input
+          type="text"
+          placeholder="Resposta..."
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          onKeyDown={handleKeyDown}
+        />
+        <button onClick={handleClick}>OK</button>
+      </div>
     </div>
   );
 }

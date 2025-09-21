@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../SimpleForm.css";
+import "../styles/fases.css";
+import estrelaImg from "../assets/star.png";
+import fase0 from "../assets/codigomorse0.jpg";
 
-export default function Fase1() {
+export default function Fase0() {
   const [text, setText] = useState("");
   const navigate = useNavigate();
 
@@ -35,18 +37,28 @@ export default function Fase1() {
   }
 
   return (
-    <div className="container">
-      <img src="codigomorse.jpg" alt="Imagem 1" />
-      <p>Nosso enigma irá funcionar da seguinte maneira: teremos uma imagem e um campo para colocar a senha. 
-        A senha deve ser extraída da imagem. Podemos baixar a imagem, o nome dela pode ter alguma dica.</p>
-      <input
-        type="text"
-        placeholder="Digite sua resposta..."
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        onKeyDown={handleKeyDown}
-      />
-      <button onClick={handleClick}>Enviar</button>
+    <div className="fase-container">
+      <img src={estrelaImg} alt="estrela" className="icon-top" />
+
+      <div className="card">
+        <img src={fase0} alt="Fase 0" className="card-img" />
+      </div>
+
+      <div className="info-box">
+        <div className="fase-num">0</div>
+        <p>Resolva o enigma</p>
+      </div>
+
+      <div className="input-area">
+        <input
+          type="text"
+          placeholder="Resposta..."
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          onKeyDown={handleKeyDown}
+        />
+        <button onClick={handleClick}>OK</button>
+      </div>
     </div>
   );
 }

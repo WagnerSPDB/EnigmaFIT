@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../SimpleForm.css";
+import "../styles/fases.css";
+import estrelaImg from "../assets/star.png";
+import fase4 from "../assets/RickRiordan4.jpg";
 
 export default function Fase4() {
   const [text, setText] = useState("");
@@ -18,9 +20,9 @@ export default function Fase4() {
 
 
       if (data.ok) {
-        alert("Resposta correta!");
+        alert("Resposta correta! Fim de jogo!");
         localStorage.setItem("ultimaFaseConcluida", "4"); // salva progresso
-        navigate("/fase5");
+        navigate("/");
       }else{
         alert("Resposta incorreta, tente novamente.");
         setText(""); // Limpa o campo de texto se a resposta estiver errada
@@ -39,19 +41,28 @@ export default function Fase4() {
   }
 
   return (
-    <div className="container">
-      <img
-        src="biogolia.jpg"
-        alt="Imagem 1"
-      />
-      <input
-        type="text"
-        placeholder="Escreva algo aqui..."
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        onKeyDown={handleKeyDown}  // Adicionando o evento de pressionar tecla
-      />
-      <button onClick={handleClick}>Enviar</button>
+    <div className="fase-container">
+      <img src={estrelaImg} alt="estrela" className="icon-top" />
+
+      <div className="card">
+        <img src={fase4} alt="Fase 4" className="card-img" />
+      </div>
+
+      <div className="info-box">
+        <div className="fase-num">4</div>
+        <p>Resolva o enigma</p>
+      </div>
+
+      <div className="input-area">
+        <input
+          type="text"
+          placeholder="Resposta..."
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          onKeyDown={handleKeyDown}
+        />
+        <button onClick={handleClick}>OK</button>
+      </div>
     </div>
   );
 }

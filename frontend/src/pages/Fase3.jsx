@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../SimpleForm.css";
+import "../styles/fases.css";
+import estrelaImg from "../assets/star.png"; 
+import fase3 from "../assets/fase3.jpg";
 
 export default function Fase3() {
   const [text, setText] = useState("");
@@ -18,7 +20,7 @@ export default function Fase3() {
 
 
       if (data.ok) {
-        alert("Resposta correta! Final de desafio!");
+        alert("Resposta correta!");
         localStorage.setItem("ultimaFaseConcluida", "3"); // salva progresso
         navigate("/fase4");
       }else{
@@ -39,20 +41,28 @@ export default function Fase3() {
   }
 
   return (
-    <div className="container">
-      <img
-        src="neymar.jpg"
-        alt="Imagem 1"
-      />
-      <p>Senha: neymar</p>
-      <input
-        type="text"
-        placeholder="Escreva algo aqui..."
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        onKeyDown={handleKeyDown} 
-      />
-      <button onClick={handleClick}>Enviar</button>
+    <div className="fase-container">
+      <img src={estrelaImg} alt="estrela" className="icon-top" />
+
+      <div className="card">
+        <img src={fase3} alt="Fase 3" className="card-img" />
+      </div>
+
+      <div className="info-box">
+        <div className="fase-num">3</div>
+        <p>Resolva o enigma</p>
+      </div>
+
+      <div className="input-area">
+        <input
+          type="text"
+          placeholder="Resposta..."
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          onKeyDown={handleKeyDown}
+        />
+        <button onClick={handleClick}>OK</button>
+      </div>
     </div>
   );
 }

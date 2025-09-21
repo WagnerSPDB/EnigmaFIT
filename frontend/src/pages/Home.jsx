@@ -1,14 +1,19 @@
 // Home.js
 import { useNavigate } from 'react-router-dom';
+import "./../styles/home.css";
+import logo from '../assets/logo.png';
 
 export default function Home() {
   const navigate = useNavigate();
 
   return (
     <div className="container">
-      <h1>Bem-vindo ao Jogo de Perguntas!</h1>
-      <p>Tente acertar todas as fases para vencer</p>
-      <button onClick={() => navigate('/fase0')}>Começar</button>
+      <img src={logo} alt="Logo FIT" className="logo" />
+      <h1 className="title">Enigmas <br/>FIT</h1>
+      <button className="start-btn" onClick={() => navigate('/fase0')}>
+        Começar
+      </button>
     </div>
+
   );
 }
