@@ -22,7 +22,8 @@ export default function Fase4() {
       if (data.ok) {
         alert("Resposta correta! Fim de jogo!");
         localStorage.setItem("ultimaFaseConcluida", "4"); // salva progresso
-        navigate("/");
+        localStorage.setItem("respostaFinal", text); // salva a resposta correta
+        navigate("/final");
       }else{
         alert("Resposta incorreta, tente novamente.");
         setText(""); // Limpa o campo de texto se a resposta estiver errada
