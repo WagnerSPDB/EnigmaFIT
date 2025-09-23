@@ -1,6 +1,7 @@
 // server.js
 const express = require("express");
 const cors = require("cors");
+const PLANILHA_URL = "https://script.google.com/macros/s/AKfycbyYLg4U52eAPBjhgwnXimLjlYx5iuyJ7-TkTUHwoh0m5O4yQJ9t-06AzGRWARtyajDR/exec";
 
 const app = express();
 app.use(cors());
@@ -17,7 +18,7 @@ const respostas = {
 
 // Endpoint para verificar resposta
 app.post("/verificar", (req, res) => {
-  console.log("Recebido no backend:", req.body); // debug
+  console.log("Recebido no backend:", req.body);
 
   const { fase, resposta } = req.body;
 
@@ -25,10 +26,7 @@ app.post("/verificar", (req, res) => {
     return res.status(400).json({ ok: false, msg: "Fase e resposta são obrigatórias" });
   }
 
-  // Pega a resposta correta do dicionário
   const respostaCorreta = respostas[fase];
-
-  // Normaliza a resposta do usuário: remove espaços e coloca em minúsculas
   const respostaUsuario = resposta.trim().toLowerCase();
 
   if (respostaCorreta && respostaCorreta.toLowerCase() === respostaUsuario) {
@@ -38,9 +36,49 @@ app.post("/verificar", (req, res) => {
   }
 });
 
+// gera horário formatado em dd/mm/yyyy hh:mm:ss
+function formatarHorario() {
+  const agora = new Date();
+  const dia = String(agora.getDate()).padStart(2, "0");
+  const mes = String(agora.getMonth() + 1).padStart(2, "0");
+  const ano = agora.getFullYear();
+  const hora = String(agora.getHours()).padStart(2, "0");
+  const min = String(agora.getMinutes()).padStart(2, "0");
+  const seg = String(agora.getSeconds()).padStart(2, "0");
+  return `${dia}/${mes}/${ano} ${hora}:${min}:${seg}`;
+}
+
+
+app.post("/finalizar", async (req, res) => {
+  const { equipe, resposta } = req.body;
+
+  if (!equipe || !resposta) {
+    return res.status(400).json({ ok: false, msg: "Equipe e resposta são obrigatórias" });
+  }
+
+  const respostaCorreta = respostas["fase4"];
+  if (respostaCorreta.toLowerCase() !== resposta.trim().toLowerCase()) {
+    return res.status(403).json({ ok: false, msg: "Resposta incorreta!" });
+  }
+
+  const horario = formatarHorario(); // aqui já vem formatado
+
+  try {
+    await fetch(PLANILHA_URL, {
+      method: "POST",
+      body: JSON.stringify({ equipe, horario }),
+      headers: { "Content-Type": "application/json" }
+    });
+
+    return res.json({ ok: true, msg: "Finalizado com sucesso!" });
+  } catch (err) {
+    console.error("Erro ao salvar na planilha:", err);
+    return res.status(500).json({ ok: false, msg: "Erro ao salvar resultado" });
+  }
+});
+
 
 const HOST = "0.0.0.0";
-// Usa a porta do Render ou 3001 localmente
 const PORT = process.env.PORT || 3001;
 console.log("Porta do servidor:", process.env.PORT);
 
