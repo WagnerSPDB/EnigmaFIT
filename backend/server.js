@@ -13,7 +13,8 @@ const respostas = {
   fase1: "familia",
   fase2: "20140801",
   fase3: "berlim",
-  fase4: "apolo"
+  fase4: "apolo",
+  fase5: "fe"
 };
 
 // Endpoint para verificar resposta

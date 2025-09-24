@@ -26,7 +26,7 @@ export default function Final() {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/verificar`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fase: "fase4", resposta: respostaFinal })
+        body: JSON.stringify({ fase: "fase5", resposta: respostaFinal })
       });
 
       const data = await res.json();
