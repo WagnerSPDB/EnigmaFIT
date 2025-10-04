@@ -7,7 +7,7 @@ import logo from "../assets/logo.png";
 export default function Final() {
   const navigate = useNavigate();
   const [nomeEquipe, setNomeEquipe] = useState("");
-  const respostaFinal = localStorage.getItem("respostaFinal") || ""; // pega a resposta da fase4
+  const respostaFinal = localStorage.getItem("respostaFinal") || ""; // pega a resposta da fase
 
 
   async function handleSalvar() {
@@ -26,7 +26,7 @@ export default function Final() {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/verificar`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fase: "fase5", resposta: respostaFinal })
+        body: JSON.stringify({ fase: "fase6", resposta: respostaFinal })
       });
 
       const data = await res.json();
@@ -44,7 +44,7 @@ export default function Final() {
       });
 
       localStorage.setItem("nomeEquipe", nomeEquipe);
-      alert("Equipe registrada com sucesso!");
+      alert("Equipe registrada com sucesso!");  
       navigate("/"); // volta para o início
     } catch (err) {
       console.error(err);

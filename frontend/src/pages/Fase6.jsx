@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/fases.css";
 import estrelaImg from "../assets/star.png";
-import fase5 from "../assets/binario5.jpg";
+import fase6 from "../assets/fitcrateus6.gif";
 
-export default function Fase5() {
+export default function Fase6() {
   const [text, setText] = useState("");
   const navigate = useNavigate();
 
@@ -13,7 +13,7 @@ export default function Fase5() {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/verificar`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fase: "fase5", resposta: text })
+        body: JSON.stringify({ fase: "fase6", resposta: text })
       });
 
       const data = await res.json();
@@ -21,8 +21,9 @@ export default function Fase5() {
 
       if (data.ok) {
         alert("Resposta correta! Fim de jogo!");
-        localStorage.setItem("ultimaFaseConcluida", "5"); // salva progresso
-        navigate("/fase6");
+        localStorage.setItem("ultimaFaseConcluida", "6"); // salva progresso
+        localStorage.setItem("respostaFinal", text); // salva a resposta correta
+        navigate("/final");
       }else{
         alert("Resposta incorreta, tente novamente.");
         setText(""); // Limpa o campo de texto se a resposta estiver errada
@@ -45,11 +46,11 @@ export default function Fase5() {
       <img src={estrelaImg} alt="estrela" className="icon-top" />
 
       <div className="card">
-        <img src={fase5} alt="Fase 5" className="card-img" />
+        <img src={fase6} alt="Fase 6" className="card-img" />
       </div>
 
       <div className="info-box">
-        <div className="fase-num">5</div>
+        <div className="fase-num">6</div>
         <p>Resolva o enigma</p>
       </div>
 

@@ -14,7 +14,8 @@ const respostas = {
   fase2: "20140801",
   fase3: "berlim",
   fase4: "apolo",
-  fase5: "fe"
+  fase5: "fe",
+  fase6: "descartes"
 };
 
 // Endpoint para verificar resposta
@@ -37,17 +38,15 @@ app.post("/verificar", (req, res) => {
   }
 });
 
-// gera horário formatado em dd/mm/yyyy hh:mm:ss
+// gera horário formatado em dd/mm
 function formatarHorario() {
-  const agora = new Date();
-  const dia = String(agora.getDate()).padStart(2, "0");
-  const mes = String(agora.getMonth() + 1).padStart(2, "0");
-  const ano = agora.getFullYear();
-  const hora = String(agora.getHours()).padStart(2, "0");
-  const min = String(agora.getMinutes()).padStart(2, "0");
-  const seg = String(agora.getSeconds()).padStart(2, "0");
-  return `${dia}/${mes}/${ano} ${hora}:${min}:${seg}`;
+  return new Intl.DateTimeFormat("pt-BR", {
+    dateStyle: "short",
+    timeStyle: "medium",
+    timeZone: "America/Sao_Paulo"
+  }).format(new Date());
 }
+
 
 
 app.post("/finalizar", async (req, res) => {
@@ -57,7 +56,7 @@ app.post("/finalizar", async (req, res) => {
     return res.status(400).json({ ok: false, msg: "Equipe e resposta são obrigatórias" });
   }
 
-  const respostaCorreta = respostas["fase4"];
+  const respostaCorreta = respostas["fase6"];
   if (respostaCorreta.toLowerCase() !== resposta.trim().toLowerCase()) {
     return res.status(403).json({ ok: false, msg: "Resposta incorreta!" });
   }
