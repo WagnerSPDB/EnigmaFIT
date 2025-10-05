@@ -5,7 +5,7 @@ const PLANILHA_URL = "https://script.google.com/macros/s/AKfycbyYLg4U52eAPBjhgwn
 
 const app = express();
 app.use(cors());
-app.use(express.json()); // permite receber JSON
+app.use(express.json());
 
 // Dicionário de respostas
 const respostas = {
@@ -61,7 +61,7 @@ app.post("/finalizar", async (req, res) => {
     return res.status(403).json({ ok: false, msg: "Resposta incorreta!" });
   }
 
-  const horario = formatarHorario(); // aqui já vem formatado
+  const horario = formatarHorario();
 
   try {
     await fetch(PLANILHA_URL, {
