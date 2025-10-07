@@ -3,12 +3,17 @@ import { useNavigate } from "react-router-dom";
 import "../styles/fases.css";
 import estrelaImg from "../assets/star.png";
 import fase0 from "../assets/codigomorse0.jpg";
+import LoadingOverlay from "../components/Loading";
 
 export default function Fase0() {
   const [text, setText] = useState("");
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   async function handleClick() {
+    if (loading) return;
+    setLoading(true);
+
     try {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/verificar`, {
         method: "POST",
@@ -20,15 +25,17 @@ export default function Fase0() {
 
       if (data.ok) {
         alert("Resposta correta, boa sorte!");
-        localStorage.setItem("ultimaFaseConcluida", "0"); // salva progresso
+        localStorage.setItem("ultimaFaseConcluida", "0");
         navigate("/fase1");
-      } else{
+      } else {
         alert("Resposta incorreta, tente novamente.");
-        setText(""); // Limpa o campo de texto se a resposta estiver errada
+        setText("");
       }
     } catch (err) {
       console.error(err);
       alert("Erro ao verificar resposta");
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -38,6 +45,8 @@ export default function Fase0() {
 
   return (
     <div className="fase-container">
+      <LoadingOverlay show={loading} />
+
       <img src={estrelaImg} alt="estrela" className="icon-top" />
 
       <div className="card">
@@ -46,7 +55,7 @@ export default function Fase0() {
 
       <div className="info-box">
         <div className="fase-num">0</div>
-        <p>Resolva o enigma</p>
+        <p>Samuel Finley Breese</p>
       </div>
 
       <div className="input-area">
@@ -56,9 +65,13 @@ export default function Fase0() {
           value={text}
           onChange={(e) => setText(e.target.value)}
           onKeyDown={handleKeyDown}
+          disabled={loading}
         />
-        <button onClick={handleClick}>OK</button>
+        <button onClick={handleClick} disabled={loading}>
+          {loading ? "Verificando..." : "OK"}
+        </button>
       </div>
     </div>
   );
+
 }

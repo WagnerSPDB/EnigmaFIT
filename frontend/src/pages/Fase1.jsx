@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/fases.css";
-import fase1 from "../assets/biogolia1.jpg";
-import estrelaImg from "../assets/star.png";
+import fase1 from "../assets/fase1.jpg";
+import FaseTemplate from "../components/FaseTemplate";
 
 export default function Fase1() {
+  const [loading, setLoading] = useState(false)
   const [text, setText] = useState("");
   const navigate = useNavigate();
 
   async function handleClick() {
+    if (loading) return;
+    setLoading(true);
     try {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/verificar`, {
         method: "POST",
@@ -20,20 +23,21 @@ export default function Fase1() {
 
 
       if (data.ok) {
-        alert("Resposta correta!");
-        localStorage.setItem("ultimaFaseConcluida", "1"); // salva progresso
+        alert("Resposta correta! Continue assim!");
+        localStorage.setItem("ultimaFaseConcluida", "1");
         navigate("/fase2");
-      }else{
+      } else {
         alert("Resposta incorreta, tente novamente.");
-        setText(""); // Limpa o campo de texto se a resposta estiver errada
+        setText("");
       }
     } catch (err) {
       console.error(err);
       alert("Erro ao verificar resposta");
+    } finally {
+      setLoading(false);
     }
   }
 
-  // Função para capturar o Enter
   function handleKeyDown(e) {
     if (e.key === "Enter") {
       handleClick();
@@ -41,28 +45,14 @@ export default function Fase1() {
   }
 
   return (
-    <div className="fase-container">
-      <img src={estrelaImg} alt="estrela" className="icon-top" />
-
-      <div className="card">
-        <img src={fase1} alt="Fase 1" className="card-img" />
-      </div>
-
-      <div className="info-box">
-        <div className="fase-num">1</div>
-        <p>Resolva o enigma</p>
-      </div>
-
-      <div className="input-area">
-        <input
-          type="text"
-          placeholder="Resposta..."
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
-        <button onClick={handleClick}>OK</button>
-      </div>
-    </div>
+    <FaseTemplate
+      faseNum="1"
+      imagem={fase1}
+      value={text}
+      onChange={(e) => setText(e.target.value)}
+      onKeyDown={handleKeyDown}
+      onClick={handleClick}
+      loading={loading}
+    />
   );
 }

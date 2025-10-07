@@ -7,8 +7,8 @@ import LoadingOverlay from "../components/Loading";
 export default function Final() {
   const navigate = useNavigate();
   const [nomeEquipe, setNomeEquipe] = useState("");
+  const [respostaFinal, setRespostaFinal] = useState("");
   const [loading, setLoading] = useState(false);
-  const respostaFinal = localStorage.getItem("respostaFinal") || "";
 
   async function handleSalvar() {
     if (loading) return;
@@ -17,7 +17,7 @@ export default function Final() {
       return;
     }
     if (!respostaFinal.trim()) {
-      alert("Resposta final não encontrada!");
+      alert("Digite a resposta final!");
       return;
     }
 
@@ -27,7 +27,7 @@ export default function Final() {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/verificar`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fase: "fase6", resposta: respostaFinal })
+        body: JSON.stringify({ fase: "final", resposta: respostaFinal })
       });
 
       const data = await res.json();
@@ -65,6 +65,21 @@ export default function Final() {
       <h1 className="title">Parabéns!</h1>
       <p className="subtitle">Você concluiu todos os enigmas.</p>
 
+      <p>A resposta final é a junção do primeiro caractere
+         de cada uma das respostas das fases, na ordem, 
+         da fase 0 até a fase 6.<br></br>Exemplo: se as respostas forem "casa", "bola", "faca",
+         a resposta final será "cbf".</p>
+      
+      <div className="input-area-resposta">
+        <input
+          type="text"
+          placeholder="Resposta Final"
+          value={respostaFinal}
+          onChange={(e) => setRespostaFinal(e.target.value)}
+          onKeyDown={handleKeyDown}
+          disabled={loading}
+        />
+      </div>
       <div className="input-area">
         <input
           type="text"
