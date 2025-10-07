@@ -10,12 +10,13 @@ app.use(express.json());
 // Dicionário de respostas
 const respostas = {
   fase0: "fit2025",
-  fase1: "familia",
-  fase2: "20140801",
-  fase3: "berlim",
-  fase4: "apolo",
+  fase1: "berlim",
+  fase2: "apolo",
+  fase3: "familia",
+  fase4: "20140801",
   fase5: "fe",
-  fase6: "descartes"
+  fase6: "descartes",
+  final: "fbaf2fd"
 };
 
 // Endpoint para verificar resposta
@@ -38,7 +39,7 @@ app.post("/verificar", (req, res) => {
   }
 });
 
-// gera horário formatado em dd/mm
+
 function formatarHorario() {
   return new Intl.DateTimeFormat("pt-BR", {
     dateStyle: "short",
@@ -48,7 +49,6 @@ function formatarHorario() {
 }
 
 
-
 app.post("/finalizar", async (req, res) => {
   const { equipe, resposta } = req.body;
 
@@ -56,7 +56,7 @@ app.post("/finalizar", async (req, res) => {
     return res.status(400).json({ ok: false, msg: "Equipe e resposta são obrigatórias" });
   }
 
-  const respostaCorreta = respostas["fase6"];
+  const respostaCorreta = respostas["final"];
   if (respostaCorreta.toLowerCase() !== resposta.trim().toLowerCase()) {
     return res.status(403).json({ ok: false, msg: "Resposta incorreta!" });
   }
