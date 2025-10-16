@@ -10,7 +10,6 @@ export default function Home() {
       <img src={logo} alt="Logo FIT" className="logo" />
       <div>
         <h1 className="title">Enigmas <br />FIT</h1>
-        <h3> Realização: Marca </h3>
       </div>
       <button className="start-btn" onClick={() => navigate('/fase0')}>
         Começar

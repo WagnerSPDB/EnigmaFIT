@@ -9,6 +9,10 @@ import Fase3 from "./pages/Fase3";
 import Fase4 from "./pages/Fase4";
 import Fase5 from "./pages/Fase5";
 import Fase6 from "./pages/Fase6";
+import Fase7 from "./pages/Fase7";
+import Fase8 from "./pages/Fase8";
+import Fase8b from "./pages/Fase8b";
+import Fase9 from "./pages/Fase9";
 import Final from "./pages/Final";
 import ProtectedRoute from "./components/ProtectedRoutes";
 
@@ -72,7 +76,7 @@ export default function App() {
             </ProtectedRoute>
           }
         />
-        
+
         <Route
           path="/fase6"
           element={
@@ -83,18 +87,6 @@ export default function App() {
         />
 
         <Route
-          path="/final"
-          element={
-            <ProtectedRoute faseAtual={5}>
-              <Final />
-            </ProtectedRoute>
-          }
-        />
-
-
-{/*
-
-        <Route
           path="/fase7"
           element={
             <ProtectedRoute faseAtual={7}>
@@ -103,15 +95,42 @@ export default function App() {
           }
         />
 
+
         <Route
           path="/fase8"
           element={
-            <ProtectedRoute faseAtual={7}>
+            <ProtectedRoute faseAtual={8}>
               <Fase8 />
             </ProtectedRoute>
           }
         />
-        */}
+        <Route
+          path="/fase8b"
+          element={
+            <ProtectedRoute faseAtual={8}>
+              <Fase8b />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/fase9"
+          element={
+            <ProtectedRoute faseAtual={9}>
+              <Fase9 />
+            </ProtectedRoute>
+          }
+        />
+
+
+        <Route
+          path="/final"
+          element={
+            <ProtectedRoute faseAtual={9}>
+              <Final />
+            </ProtectedRoute>
+          }
+        />
 
       </Routes>
     </Router>

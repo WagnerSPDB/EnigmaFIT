@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/fases.css";
-import fase2 from "../assets/RickRiordan2.jpg";
+import fase2 from "../assets/nationaldex2.mp4";
 import FaseTemplate from "../components/FaseTemplate";
 
 
@@ -48,9 +48,9 @@ export default function Fase2() {
   return (
     <FaseTemplate
       faseNum="2"
-      imagem={fase2}
+      video={fase2}
       value={text}
-      texto="Chalé"
+      texto="???"
       onChange={(e) => setText(e.target.value)}
       onKeyDown={handleKeyDown}
       onClick={handleClick}

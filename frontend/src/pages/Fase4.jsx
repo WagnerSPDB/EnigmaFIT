@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/fases.css";
-import fase4 from "../assets/fase4.jpg";
+import fase4 from "../assets/biogolia4.jpg";
 import FaseTemplate from "../components/FaseTemplate";
 
 export default function Fase4() {
   const [text, setText] = useState("");
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
 
   async function handleClick() {
     if (loading) return;
@@ -25,11 +25,11 @@ export default function Fase4() {
 
       if (data.ok) {
         alert("Resposta correta!");
-        localStorage.setItem("ultimaFaseConcluida", "4"); // salva progresso
+        localStorage.setItem("ultimaFaseConcluida", "4");
         navigate("/fase5");
       } else {
         alert("Resposta incorreta, tente novamente.");
-        setText(""); // Limpa o campo de texto se a resposta estiver errada
+        setText("");
       }
     } catch (err) {
       console.error(err);
@@ -50,7 +50,7 @@ export default function Fase4() {
       faseNum="4"
       imagem={fase4}
       value={text}
-      texto="Cifra"
+      texto="biogolia"
       onChange={(e) => setText(e.target.value)}
       onKeyDown={handleKeyDown}
       onClick={handleClick}

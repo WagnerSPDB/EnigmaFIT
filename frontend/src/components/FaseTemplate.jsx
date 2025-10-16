@@ -1,11 +1,11 @@
 import React from "react";
 import LoadingOverlay from "./Loading";
 import estrelaImg from "../assets/star.png";
-import logoMarca from "../assets/logomarca.png";
 
 export default function FaseTemplate({
   faseNum,
   imagem,
+  video,
   texto = "Resolva o enigma",
   value,
   onChange,
@@ -18,13 +18,22 @@ export default function FaseTemplate({
       <LoadingOverlay show={loading} />
 
       <div className="icon-container">
-        <img src={logoMarca} alt="logo esquerdo" className="icon-side" />
         <img src={estrelaImg} alt="estrela" className="icon-top" />
-        <img src={logoMarca} alt="logo direito" className="icon-side" />
       </div>
 
       <div className="card">
-        <img src={imagem} alt={`Fase ${faseNum}`} className="card-img" />
+        {video ? (
+          <video
+            src={video}
+            className="card-video"
+            controls
+            preload="metadata"
+          >
+            Seu navegador não suporta vídeo.
+          </video>
+        ) : (
+          <img src={imagem} alt={`Fase ${faseNum}`} className="card-img" />
+        )}
       </div>
 
       <div className="info-box">

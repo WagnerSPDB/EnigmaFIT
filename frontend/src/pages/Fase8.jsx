@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/fases.css";
-import fase6 from "../assets/fase6.jpg";
+import fase8 from "../assets/fase8.jpg";
 import FaseTemplate from "../components/FaseTemplate";
 
-export default function Fase6() {
+export default function Fase8() {
   const [text, setText] = useState("");
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
 
   async function handleClick() {
     if (loading) return;
@@ -17,19 +17,19 @@ export default function Fase6() {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/verificar`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fase: "fase6", resposta: text })
+        body: JSON.stringify({ fase: "fase8", resposta: text })
       });
 
       const data = await res.json();
 
 
       if (data.ok) {
-        alert("Resposta correta!");
-        localStorage.setItem("ultimaFaseConcluida", "6"); // salva progresso
-        navigate("/fase7");
-      } else {
+        alert("Resposta correta! Fim de jogo!");
+        localStorage.setItem("ultimaFaseConcluida", "8");
+        navigate("/fase8b");
+      }else{
         alert("Resposta incorreta, tente novamente.");
-        setText(""); // Limpa o campo de texto se a resposta estiver errada
+        setText("");
       }
     } catch (err) {
       console.error(err);
@@ -46,15 +46,15 @@ export default function Fase6() {
   }
 
   return (
-    <FaseTemplate
-      faseNum="6"
-      imagem={fase6}
+  <FaseTemplate
+      faseNum="8"
+      imagem={fase8}
       value={text}
-      texto="Cifra"
+      texto="???"
       onChange={(e) => setText(e.target.value)}
       onKeyDown={handleKeyDown}
       onClick={handleClick}
       loading={loading}
     />
-  );
+);
 }

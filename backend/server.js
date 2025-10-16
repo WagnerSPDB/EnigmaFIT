@@ -7,19 +7,22 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Dicionário de respostas
+
 const respostas = {
   fase0: "fit2025",
   fase1: "berlim",
-  fase2: "apolo",
-  fase3: "familia",
-  fase4: "20140801",
-  fase5: "fe",
-  fase6: "descartes",
-  final: "fbaf2fd"
+  fase2: "mqtt",
+  fase3: "apolo",
+  fase4: "familia",
+  fase5: "iomt",
+  fase6: "20140801",
+  fase7: "fe",
+  fase8: "vanet",
+  fase9: "descartes",
+  final: "fbmafi2fvd"
 };
 
-// Endpoint para verificar resposta
+
 app.post("/verificar", (req, res) => {
   console.log("Recebido no backend:", req.body);
 

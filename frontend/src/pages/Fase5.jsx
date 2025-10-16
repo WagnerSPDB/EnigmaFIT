@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/fases.css";
-import fase5 from "../assets/binario5.jpg";
+import fase5 from "../assets/fase5.mp4";
 import FaseTemplate from "../components/FaseTemplate";
 
 export default function Fase5() {
@@ -48,9 +48,9 @@ export default function Fase5() {
   return (
     <FaseTemplate
       faseNum="5"
-      imagem={fase5}
+      video={fase5}
       value={text}
-      texto="Binário"
+      texto="???"
       onChange={(e) => setText(e.target.value)}
       onKeyDown={handleKeyDown}
       onClick={handleClick}
