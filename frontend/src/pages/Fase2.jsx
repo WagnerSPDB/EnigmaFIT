@@ -26,7 +26,7 @@ export default function Fase2() {
       if (data.ok) {
         alert("Resposta correta!");
         localStorage.setItem("ultimaFaseConcluida", "2");
-        navigate("/fase3");
+        navigate("/fase2b");
       } else {
         alert("Resposta incorreta, tente novamente.");
         setText("");
@@ -50,7 +50,7 @@ export default function Fase2() {
       faseNum="2"
       video={fase2}
       value={text}
-      texto="???"
+      texto="Recep Tayyip Erdoğan"
       onChange={(e) => setText(e.target.value)}
       onKeyDown={handleKeyDown}
       onClick={handleClick}

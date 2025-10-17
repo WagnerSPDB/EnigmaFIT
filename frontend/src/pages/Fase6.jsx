@@ -25,11 +25,11 @@ export default function Fase6() {
 
       if (data.ok) {
         alert("Resposta correta!");
-        localStorage.setItem("ultimaFaseConcluida", "6"); // salva progresso
+        localStorage.setItem("ultimaFaseConcluida", "6");
         navigate("/fase7");
       } else {
         alert("Resposta incorreta, tente novamente.");
-        setText(""); // Limpa o campo de texto se a resposta estiver errada
+        setText("");
       }
     } catch (err) {
       console.error(err);

@@ -24,7 +24,7 @@ export default function Fase8() {
 
 
       if (data.ok) {
-        alert("Resposta correta! Fim de jogo!");
+        alert("Resposta correta!");
         localStorage.setItem("ultimaFaseConcluida", "8");
         navigate("/fase8b");
       }else{
@@ -50,7 +50,7 @@ export default function Fase8() {
       faseNum="8"
       imagem={fase8}
       value={text}
-      texto="???"
+      texto="American Standard Code for Information Interchange"
       onChange={(e) => setText(e.target.value)}
       onKeyDown={handleKeyDown}
       onClick={handleClick}

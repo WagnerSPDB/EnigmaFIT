@@ -5,9 +5,11 @@ import Home from "./pages/Home";
 import Fase0 from "./pages/Fase0";
 import Fase1 from "./pages/Fase1";
 import Fase2 from "./pages/Fase2";
+import Fase2b from "./pages/Fase2b";
 import Fase3 from "./pages/Fase3";
 import Fase4 from "./pages/Fase4";
 import Fase5 from "./pages/Fase5";
+import Fase5b from "./pages/Fase5b";
 import Fase6 from "./pages/Fase6";
 import Fase7 from "./pages/Fase7";
 import Fase8 from "./pages/Fase8";
@@ -51,6 +53,15 @@ export default function App() {
         />
 
         <Route
+          path="/fase2b"
+          element={
+            <ProtectedRoute faseAtual={2}>
+              <Fase2b />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
           path="/fase3"
           element={
             <ProtectedRoute faseAtual={3}>
@@ -73,6 +84,15 @@ export default function App() {
           element={
             <ProtectedRoute faseAtual={5}>
               <Fase5 />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/fase5b"
+          element={
+            <ProtectedRoute faseAtual={5}>
+              <Fase5b />
             </ProtectedRoute>
           }
         />

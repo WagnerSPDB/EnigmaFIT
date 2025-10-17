@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/fases.css";
-import fase9 from "../assets/fitcrateus9.gif";
+import fase9 from "../assets/sobrenome.gif";
 import FaseTemplate from "../components/FaseTemplate";
 
 export default function Fase9() {

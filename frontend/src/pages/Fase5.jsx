@@ -26,7 +26,7 @@ export default function Fase5() {
       if (data.ok) {
         alert("Resposta correta!");
         localStorage.setItem("ultimaFaseConcluida", "5");
-        navigate("/fase6");
+        navigate("/fase5b");
       } else {
         alert("Resposta incorreta, tente novamente.");
         setText("");
@@ -50,7 +50,8 @@ export default function Fase5() {
       faseNum="5"
       video={fase5}
       value={text}
-      texto="???"
+      texto="(retteL,droW)"
+
       onChange={(e) => setText(e.target.value)}
       onKeyDown={handleKeyDown}
       onClick={handleClick}

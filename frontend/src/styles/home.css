@@ -3,31 +3,28 @@
   background-size: cover;
   background-position: center;
   width: 100%;
-  height: 100%; /* ocupa a tela toda */
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* distribui os itens */
+  justify-content: space-between;
   align-items: center;
-  padding: 60px 20px; /* espaço interno */
+  padding: 60px 20px;
   text-align: center;
   color: white;
   box-sizing: border-box;
 }
 
-/* Logo no topo */
 .logo {
   width: 150px;
   height: auto;
 }
 
-/* Título central */
 .title {
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 100px;
 }
 
-/* Botão no rodapé */
 .start-btn {
   width: 80%;
   max-width: 300px;
@@ -46,4 +43,16 @@
 .start-btn:hover {
   transform: scale(1.05);
   opacity: 0.9;
+}
+
+.text-box {
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  padding: 30px 40px;
+  max-width: 800px;
+  background-color: 0 0 25px rgba(255, 0, 255, 0.15);
+  line-height: 1.6;
+  font-size: 1.1rem;
+  color: white;
 }
